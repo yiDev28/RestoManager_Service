@@ -1,7 +1,13 @@
-import { Sequelize } from "sequelize";
 
-const sequelize = new Sequelize('resto_manager', 'resto_manager_owner', '1ykAVtcSip8Q', {
-    host: "ep-plain-mode-a5m7eeso.us-east-2.aws.neon.tech",
+import { Sequelize } from "sequelize";
+import dotenv from 'dotenv';
+dotenv.config();
+
+
+const sequelize = new Sequelize(process.env.DATABASE || '', 
+                                process.env.USERDB || '',
+                                process.env.PASSDB ||'', {
+    host: process.env.HOST||'',
     dialect: 'postgres',
     dialectOptions: {
         ssl: {
